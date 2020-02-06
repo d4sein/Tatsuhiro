@@ -1,0 +1,8 @@
+# Token
+config.py
+
+# Virtual Env
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
