@@ -1,5 +1,5 @@
+from pathlib import Path
 import json
-import os
 
 import discord
 
@@ -21,17 +21,14 @@ async def on_ready():
 
 
 def load_extensions(cogs: str) -> None:
-    for category in os.listdir('app/' + cogs):
-        extensions = [file.replace('.py', '') for file in os.listdir(f'app/{cogs}/{category}') if file.endswith('.py')]
+    for extension in Path('app/cogs').rglob('*.py'):
+        extension = str(extension).replace('\\', '.').strip('.py')
 
-        for extension in extensions:
-            extension_dir = f'app.{cogs}.{category}.{extension}'
-
-            try:
-                client.load_extension(extension_dir)
-                print(f'{extension_dir} loaded.')
-            except Exception as e:
-                print(f'{extension_dir} could not be loaded: {e}')
+        try:
+            client.load_extension(extension)
+            print(f'{extension} loaded.')
+        except Exception as e:
+            print(f'{extension} could not be loaded: {e}')
 
 
 load_extensions(COG_DIR)
