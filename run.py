@@ -21,12 +21,25 @@ async def on_ready():
 
 
 def load_extensions(cogs: str) -> None:
-    for extension in Path('app/cogs').rglob('*.py'):
-        extension = str(extension).replace('\\', '.').strip('.py')
+    '''
+    Loads all extensions recursively
+    
+    Params:
+        cogs: str
+        Relative path to cogs dir
+    '''
+
+    for extension in Path(cogs).rglob('*.py'):
+        extension = str(extension)
+            # Case Windows
+            .replace('\\', '.')
+            # Case Unix-like
+            .replace('/', '.')
+            .strip('.py')
 
         try:
             client.load_extension(extension)
-            print(f'{extension} loaded.')
+            print(f'{extension} has been loaded.')
         except Exception as e:
             print(f'{extension} could not be loaded: {e}')
 
