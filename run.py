@@ -30,12 +30,7 @@ def load_extensions(cogs: str) -> None:
     '''
 
     for extension in Path(cogs).rglob('*.py'):
-        extension = str(extension)
-            # Case Windows
-            .replace('\\', '.')
-            # Case Unix-like
-            .replace('/', '.')
-            .strip('.py')
+        extension = '.'.join(extension.parts)[:-3]
 
         try:
             client.load_extension(extension)
@@ -44,5 +39,6 @@ def load_extensions(cogs: str) -> None:
             print(f'{extension} could not be loaded: {e}')
 
 
-load_extensions(COG_DIR)
-client.run(TOKEN)
+if __name__ == '__main__':
+    load_extensions(COG_DIR)
+    client.run(TOKEN)
