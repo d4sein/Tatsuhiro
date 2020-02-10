@@ -11,7 +11,6 @@ class Clear(commands.Cog):
         '''Bulk deletes messages from a channel'''
         try:
             number = int(number)
-            
             if number < 0 or number > 99:
                 await ctx.send("You must provide a number between 1-99")
                 return
