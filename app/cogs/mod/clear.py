@@ -21,7 +21,7 @@ class Clear(commands.Cog):
 
             await ctx.channel.delete_messages(msgs)
         except:
-            return await ctx.send('You must provide a integer number')
+            return await ctx.send('You must provide an integer number')
 
 
 def setup(client):
