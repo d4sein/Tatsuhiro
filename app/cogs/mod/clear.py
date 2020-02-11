@@ -12,16 +12,19 @@ class Clear(commands.Cog):
         '''Bulk deletes messages from a channel'''
         try:
             number = int(number)
-            if number <= 0 or number >= 100:
-                return await ctx.send('You must provide a number between 1-99')
+        except TypeError:
+            await ctx.send('You must provide an integer number')
+            return
 
-            msgs = []
-            async for x in ctx.channel.history(limit=number+1):
-                msgs.append(x)
+        if number <= 0 or number >= 100:
+            await ctx.send('You must provide a number between 1-99')
+            return
 
-            await ctx.channel.delete_messages(msgs)
-        except:
-            return await ctx.send('You must provide an integer number')
+        msgs = []
+        async for x in ctx.channel.history(limit=number+1):
+            msgs.append(x)
+        await ctx.channel.delete_messages(msgs)
+        return
 
 
 def setup(client):
