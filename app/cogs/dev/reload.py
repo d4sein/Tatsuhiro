@@ -19,9 +19,9 @@ class Reload(commands.Cog):
 
 def help():
     return {
-        'name': 'Load',
-        'usage': 'load <extension>',
-        'description': 'Loads an extension'
+        'name': 'Reload',
+        'usage': 'reload <extension>',
+        'description': 'Reloads an extension'
     }
 
 
