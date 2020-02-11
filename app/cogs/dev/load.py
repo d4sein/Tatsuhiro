@@ -6,10 +6,9 @@ class Load(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def load(self, ctx, extension: str=None) -> None:
+    async def load(self, ctx, extension: str = None) -> None:
         try:
             self.client.load_extension(extension)
         except Exception as e:

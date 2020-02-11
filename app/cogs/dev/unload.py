@@ -6,10 +6,9 @@ class Unload(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def unload(self, ctx, extension: str=None) -> None:
+    async def unload(self, ctx, extension: str = None) -> None:
         try:
             self.client.unload_extension(extension)
         except Exception as e:

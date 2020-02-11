@@ -4,11 +4,7 @@ import json
 
 import discord
 
-from app import client
-
-
-config = configparser.ConfigParser()
-config.read('config.ini')
+from app import client, config
 
 
 @client.event

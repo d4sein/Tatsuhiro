@@ -8,7 +8,7 @@ class Ban(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def ban(self, ctx, member: discord.Member=None, *, reason: str=None) -> None:
+    async def ban(self, ctx, member: discord.Member = None, *, reason: str = None) -> None:
         if member is None:
             await ctx.send('Missing `<@user>` argument.')
             return
