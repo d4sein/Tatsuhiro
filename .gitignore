@@ -8,10 +8,11 @@ env/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 
-# emacs
+# editor
 *~
 .#*
 \#*#
+.vscode
 
 # tests
 test.py
