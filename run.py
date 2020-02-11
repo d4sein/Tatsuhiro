@@ -8,22 +8,22 @@ from config import COG_DIR
 
 
 with open('config.json', 'r') as f:
-	config = json.load(f)
+    config = json.load(f)
 
 
 @client.event
 async def on_ready():
-	await client.change_presence(
+    await client.change_presence(
         status=config['status'],
         activity=discord.Game(config['activity']))
 
-	print('Up and running!')
+    print('Up and running!')
 
 
 def load_extensions(cogs: str) -> None:
     '''
     Loads all extensions recursively
-    
+
     Params:
         cogs: str
         Relative path to cogs dir
