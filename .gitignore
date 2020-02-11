@@ -1,5 +1,6 @@
 # Token
-config.py
+config.ini
+
 
 # Virtual Env
 env/
