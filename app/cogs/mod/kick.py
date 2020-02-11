@@ -8,9 +8,19 @@ class Kick(commands.Cog):
 
 	@commands.command()
 	@commands.has_permissions(kick_members=True)
-	async def kick(self, ctx, member: discord.Member, *, reason: str=None):
-		'''Kicks a member from the server'''
+	async def kick(self, ctx, member: discord.Member=None, *, reason: str=None) -> None:
+		if member is None:
+			return await ctx.send('Missing `<@user>` argument.')
+
 		await member.kick(reason=reason)
+
+
+def help():
+	return {
+		'name': 'Kick',
+		'usage': 'kick <@user> [reason]',
+		'description': 'Kicks a user from the server'
+	}
 
 
 def setup(client):
