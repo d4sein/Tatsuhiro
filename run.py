@@ -1,21 +1,21 @@
 from pathlib import Path
+import configparser
 import json
 
 import discord
 
 from app import client
-from config import TOKEN, COG_DIR
 
 
-with open('config.json', 'r') as f:
-    config = json.load(f)
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 
 @client.event
 async def on_ready():
     await client.change_presence(
-        status=config['status'],
-        activity=discord.Game(config['activity']))
+        status=config['CLIENT']['STATUS'],
+        activity=discord.Game(config['CLIENT']['ACTIVITY']))
 
     print('Up and running!')
 
@@ -40,5 +40,5 @@ def load_extensions(cogs: str) -> None:
 
 
 if __name__ == '__main__':
-    load_extensions(COG_DIR)
-    client.run(TOKEN)
+    load_extensions(config['DEFAULT']['COG_DIR'])
+    client.run(config['CLIENT']['TOKEN'])
