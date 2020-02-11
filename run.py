@@ -14,8 +14,8 @@ config.read('config.ini')
 @client.event
 async def on_ready():
     await client.change_presence(
-        status=config['STATUS']['STATUS'],
-        activity=discord.Game(config['STATUS']['ACTIVITY']))
+        status=config['CLIENT']['STATUS'],
+        activity=discord.Game(config['CLIENT']['ACTIVITY']))
 
     print('Up and running!')
 
@@ -41,4 +41,4 @@ def load_extensions(cogs: str) -> None:
 
 if __name__ == '__main__':
     load_extensions(config['DEFAULT']['COG_DIR'])
-    client.run(config['DEFAULT']['TOKEN'])
+    client.run(config['CLIENT']['TOKEN'])
