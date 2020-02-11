@@ -10,17 +10,17 @@ class Clear(commands.Cog):
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=None) -> None:
         if amount is None:
-            await ctx.send('Missing `<amount>` argument.')
+            await ctx.send('You\'re missing the `<amount>` argument.')
             return
 
         try:
             amount = int(amount)
         except ValueError:
-            await ctx.send('`<amount>` must be of type "int".')
+            await ctx.send('The amount needs to be a whole number.')
             return
 
         if amount <= 0 or amount >= 100:
-            await ctx.send('`<amount>` must be in {1...99}.')
+            await ctx.send('The amount needs to be between 0 and 100.')
             return
 
         messages = []
