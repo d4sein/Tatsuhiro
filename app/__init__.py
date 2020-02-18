@@ -3,6 +3,7 @@ import json
 
 from discord.ext import commands
 
+
 config = configparser.ConfigParser()
 config.read('config.ini')
 

@@ -6,21 +6,21 @@ class Clear(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
+    @commands.command(aliases=['apagar'])
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=None) -> None:
         if amount is None:
-            await ctx.send('You\'re missing the `<amount>` argument.')
+            await ctx.send('Você esqueceu do argumento `<quantidade>`.')
             return
 
         try:
             amount = int(amount)
         except ValueError:
-            await ctx.send('The amount needs to be a whole number.')
+            await ctx.send('A quantidade precisa ser um número inteiro.')
             return
 
         if amount <= 0 or amount >= 100:
-            await ctx.send('The amount needs to be between 0 and 100.')
+            await ctx.send('A quantidade precisa estar entre 0 e 100.')
             return
 
         messages = []
@@ -33,9 +33,10 @@ class Clear(commands.Cog):
 
 def help():
     return {
-        'name': 'Clear',
-        'usage': 'clear <amount>',
-        'description': 'Bulk deletes messages from a channel'
+        'name': 'Apagar',
+        'usage': 'apagar <quantidade>',
+        'aliases': 'clear',
+        'description': 'Apaga mensagens em massa de um canal'
     }
 
 

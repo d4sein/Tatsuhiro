@@ -8,24 +8,26 @@ class Ask(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
+    @commands.command(aliases=['perguntar'])
     async def ask(self, ctx) -> None:
         try:
             color = int(config['EMBED']['COLOR'])
         except ValueError as e:
             print('Could not type cast color from str to int: ', e)
             return
-        
+
         description = '''
-        1. Do your research before asking
-        2. Describe your problem as detailed as needed
-        3. Send the source code
+        1. Pesquise antes de perguntar
+        2. Descreva seu problema com detalhes o quanto for necessário
+        3. Mande o código fonte ou repositório para reprodução
         '''
 
         embed = discord.Embed(
-            title = 'How to ask a question:',
+            title = 'Como fazer uma pergunta:',
             description = description,
-            color = discord.Color(color)
+            color = discord
+
+            .Color(color)
         )
 
         await ctx.send(embed=embed)
@@ -34,8 +36,9 @@ class Ask(commands.Cog):
 def help():
     return {
         'name': 'Ask',
-        'usage': 'ask',
-        'description': 'Sends instructions on how to ask a question'
+        'usage': 'pergunta',
+        'aliases': 'ask',
+        'description': 'Manda instruções de como fazer uma pergunta produtiva'
     }
 
 
